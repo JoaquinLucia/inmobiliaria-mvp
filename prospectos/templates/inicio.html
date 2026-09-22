@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructora - Prototipo</title>
+    <!-- Cargamos Bootstrap para el diseño rápido -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #f4f5f7; 
+            font-family: Arial, sans-serif;
+        }
+        .form-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+        }
+        /* Esto hace que los campos de Django se vean redondeados y modernos como en tu foto */
+        input, select, textarea { 
+            display: block; 
+            width: 100%; 
+            padding: 10px 15px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+            background-color: #fafafa;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0056b3;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            
+            <!-- Texto de presentación -->
+            <div class="col-md-8 text-center mb-4">
+                <h1 class="fw-bold" style="color: #1a2b4c;">Encontrá tu próximo hogar en Comodoro</h1>
+                <p class="text-muted fs-5">Completá el formulario y un asesor de nuestra constructora se pondrá en contacto con vos para mostrarte las mejores opciones disponibles.</p>
+            </div>
+
+            <!-- El Formulario -->
+            <div class="col-md-7 form-container">
+                <h3 class="mb-4 fw-bold" style="color: #1a2b4c;">Tu formulario</h3>
+                
+                <form method="POST">
+                    <!-- Token de seguridad obligatorio en Django -->
+                    {% csrf_token %}
+                    
+                    <!-- Renderizamos el formulario que armaste en forms.py -->
+                    {{ formulario.as_p }}
+                    
+                    <button type="submit" class="btn btn-primary btn-lg w-100 mt-2" style="background-color: #1a2b4c; border: none;">
+                        Enviar consulta
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
