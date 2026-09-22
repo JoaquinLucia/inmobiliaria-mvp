@@ -3,66 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constructora - Prototipo</title>
-    <!-- Cargamos Bootstrap para el diseño rápido -->
+    <title>Desarrollos en Las Grutas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        body { 
-            background-color: #f4f5f7; 
-            font-family: Arial, sans-serif;
+        /* La magia de la imagen de fondo a pantalla completa */
+        .hero-section { 
+            background: linear-gradient(rgba(15, 32, 39, 0.7), rgba(32, 58, 67, 0.7)), url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop') center/cover;
+            min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+            display: flex;
+            align-items: center;
         }
+        /* La tarjeta blanca donde va tu formulario */
         .form-container { 
-            background: white; 
+            background: rgba(255, 255, 255, 0.95); 
             padding: 40px; 
             border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
         }
-        /* Esto hace que los campos de Django se vean redondeados y modernos como en tu foto */
         input, select, textarea { 
             display: block; 
             width: 100%; 
             padding: 10px 15px; 
-            border: 1px solid #ccc; 
+            border: 1px solid #ced4da; 
             border-radius: 8px; 
-            margin-bottom: 20px; 
-            background-color: #fafafa;
+            margin-bottom: 15px; 
         }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #0056b3;
-            background-color: #ffffff;
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container mt-5 mb-5">
-        <div class="row justify-content-center">
-            
-            <!-- Texto de presentación -->
-            <div class="col-md-8 text-center mb-4">
-                <h1 class="fw-bold" style="color: #1a2b4c;">Encontrá tu próximo hogar en Comodoro</h1>
-                <p class="text-muted fs-5">Completá el formulario y un asesor de nuestra constructora se pondrá en contacto con vos para mostrarte las mejores opciones disponibles.</p>
-            </div>
-
-            <!-- El Formulario -->
-            <div class="col-md-7 form-container">
-                <h3 class="mb-4 fw-bold" style="color: #1a2b4c;">Tu formulario</h3>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
                 
-                <form method="POST">
-                    <!-- Token de seguridad obligatorio en Django -->
-                    {% csrf_token %}
-                    
-                    <!-- Renderizamos el formulario que armaste en forms.py -->
-                    {{ formulario.as_p }}
-                    
-                    <button type="submit" class="btn btn-primary btn-lg w-100 mt-2" style="background-color: #1a2b4c; border: none;">
-                        Enviar consulta
-                    </button>
-                </form>
-            </div>
+                <!-- Textos a la izquierda -->
+                <div class="col-lg-6 text-white mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold">Tu lugar en Las Grutas</h1>
+                    <p class="lead mt-3">Desarrollos inmobiliarios de primer nivel frente al mar y en las mejores bajadas. Dejanos tus datos y construyamos tu próximo hogar o inversión de verano.</p>
+                    <ul class="mt-4 fs-5" style="list-style-type: '✓ ';">
+                        <li>Departamentos premium</li>
+                        <li>Casas de verano</li>
+                        <li>Locales comerciales</li>
+                    </ul>
+                </div>
 
+                <!-- Formulario a la derecha -->
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="form-container">
+                        <h3 class="mb-4 fw-bold text-center" style="color: #0f2027;">Contactá a un asesor</h3>
+                        
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ formulario.as_p }}
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3" style="background-color: #203a43; border: none;">
+                                Enviar consulta
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
